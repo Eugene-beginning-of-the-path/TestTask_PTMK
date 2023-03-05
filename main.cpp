@@ -8,15 +8,18 @@ int main(int argc, char *argv[])
 {
     try
     {
-        connection C("dbname = testtask user = postgres password = password \
+        connection C("dbname = testtask1 user = postgres password = password \
       hostaddr = 127.0.0.1 port = 5432");
         if (C.is_open())
         {
             std::cout << "Opened database successfully: " << C.dbname() << std::endl;
+            std::string number(argv[1]);
+            std::cout << std::stoi(number) << std::endl;
+            std::cout << (std::string)argv[1] << std::endl;
 
             //Depending on the parameter, operator switch will start 
             //some branch of the program 
-            switch((int)(*argv[1]) - (int)'0')
+            switch(std::stoi(argv[1])) //(int)(*argv[1]) - (int)'0' takes only one digit
             {
                 //Creating a table with fields representing fullname, 
                 //date of birth, gender.
